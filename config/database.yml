@@ -1,7 +1,6 @@
 default: &default
   adapter: postgresql
   encoding: utf8
-  database: PROJECT_development
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
   host: localhost
@@ -9,7 +8,7 @@ default: &default
 
 development:
   <<: *default
-  database: crafter_development
+  database: craftr_development
 
 test:
   <<: *default
