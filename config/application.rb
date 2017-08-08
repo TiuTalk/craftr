@@ -17,6 +17,7 @@ module Craftr
 
     # Disable generation of helpers, javascripts, css, and view specs
     config.generators do |generate|
+      generate.orm :active_record, primary_key_type: :uuid
       generate.helper false
       generate.assets false
       generate.view_specs false
