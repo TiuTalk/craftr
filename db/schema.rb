@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808042505) do
+ActiveRecord::Schema.define(version: 20170808044418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pgcrypto"
+
+  create_table "items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "mod_id"
+    t.string "name"
+    t.string "identifier"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["identifier"], name: "index_items_on_identifier"
+    t.index ["mod_id"], name: "index_items_on_mod_id"
+  end
 
   create_table "mods", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
@@ -23,4 +34,5 @@ ActiveRecord::Schema.define(version: 20170808042505) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "items", "mods"
 end
