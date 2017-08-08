@@ -33,3 +33,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
 end
+
+group :test do
+  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers', branch: 'rails-5'
+end
