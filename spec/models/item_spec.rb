@@ -4,6 +4,7 @@ RSpec.describe Item, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:mod).inverse_of(:items) }
     it { is_expected.to have_one(:recipe).inverse_of(:item) }
+    it { is_expected.to have_many(:ingredients).through(:recipe) }
   end
 
   describe 'validations' do

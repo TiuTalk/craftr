@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   # Associations
   belongs_to :mod, inverse_of: :items
   has_one :recipe, inverse_of: :item
+  has_many :ingredients, through: :recipe
 
   # Validations
   validates :mod, :name, :identifier, :icon, presence: true
