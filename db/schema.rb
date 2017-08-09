@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808044418) do
+ActiveRecord::Schema.define(version: 20170809021928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,5 +34,14 @@ ActiveRecord::Schema.define(version: 20170808044418) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "recipes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "item_id"
+    t.integer "quantity", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_recipes_on_item_id"
+  end
+
   add_foreign_key "items", "mods"
+  add_foreign_key "recipes", "items"
 end

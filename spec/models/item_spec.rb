@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:mod).inverse_of(:items) }
+    it { is_expected.to have_one(:recipe).inverse_of(:item) }
   end
 
   describe 'validations' do
