@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
+  describe 'associations' do
+    it { is_expected.to belong_to(:mod).inverse_of(:items) }
+  end
+
   describe 'validations' do
     it { is_expected.to validate_presence_of(:mod) }
     it { is_expected.to validate_presence_of(:name) }
