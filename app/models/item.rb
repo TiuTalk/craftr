@@ -8,6 +8,10 @@ class Item < ApplicationRecord
   validates :mod, :name, :identifier, :icon, presence: true
   validate :valid_icon_url
 
+  def to_s
+    name
+  end
+
   private
 
   def valid_icon_url

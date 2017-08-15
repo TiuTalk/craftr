@@ -6,4 +6,8 @@ class Ingredient < ApplicationRecord
   # Validations
   validates :recipe, :item, :quantity, presence: true
   validates :quantity, numericality: { only_integer: true, greater_than: 0 }
+
+  def to_s
+    "(#{quantity}x) #{item}"
+  end
 end
